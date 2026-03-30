@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #202124;
+  --foreground: #e8eaed;
+  --sidebar-bg: #1c1e21; /* Refined to match mockup */
+  --preview-bg: #323639;
+  --accent-color: #cfc0f5; /* Refined 'Print' button color */
+  --border-color: #3c4043;
+  --input-bg: #1c1e21;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar: var(--sidebar-bg);
+  --color-preview: var(--preview-bg);
+  --color-accent: var(--accent-color);
+  --color-border: var(--border-color);
+  --color-input: var(--input-bg);
+  --font-sans: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-section,
+  .print-section * {
+    visibility: visible;
+  }
+
+  .print-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-section h1,
+  .print-section h2,
+  .print-section h3,
+  .print-section h4,
+  .print-section h5,
+  .print-section h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+}
